@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+   
+ 
+  <head>
+    <title>Geo Location Finder</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+  </head>
+
+  <body>
+    <div class="row cen_align">
+        <div class="panel panel-default">
+            <div class="panel-heading">GEO LOCATION FINDER</div>
+            <div class="panel-body">
+                <form id="geo_form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                    <label for="xl_file">Click and Upload XLS File</label>
+                    <input type="file" class="form-control-file" id="xl_file" name="xl_file">
+                    <label>
+                        *Note: Upload excel file with column name 'Address Data'
+                    </legend>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+  </body>
+
+<script>
+    {% if error %}
+        alert('{{error}}')
+        window.location.href = window.location.href
+    {% endif %}
+</script>
+
+</html>
